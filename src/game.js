@@ -36,7 +36,7 @@ Game.prototype.start = function () {
 
 
     // Create the player
-    this.player = new Player(this.canvas, 30000, 100);
+    this.player = new Player(this.canvas, 1, 100);
 
     // Add keydown event listeners
     this.handleKeyDown = function (event) {
@@ -82,11 +82,11 @@ Game.prototype.startLoop = function () {
 
             }.bind(this);
             var randomHeight = getRandomHeight();
-            var topEnemy = new Enemy(this.canvas, 5, 0, randomHeight, "green");
+            var topEnemy = new Enemy(this.canvas, 5, 0, randomHeight, "white");
             
             var bottomEnemyY = randomHeight + this.gap
             var bottomEnemyHeight = this.canvas.height - bottomEnemyY
-            var bottomEnemy = new Enemy(this.canvas, 5, bottomEnemyY, bottomEnemyHeight, "salmon")
+            var bottomEnemy = new Enemy(this.canvas, 5, bottomEnemyY, bottomEnemyHeight, "white");
 
             this.topEnemies.push(topEnemy);
             this.bottomEnemies.push(bottomEnemy);

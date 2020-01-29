@@ -29,7 +29,12 @@ p {
     margin: 0;
 }
 
-
+body {
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
 /* ---- layout ---- */
 
@@ -83,5 +88,24 @@ body {
 
 .game .canvas-container {
     flex: 1;
-    border: 1px solid;
+    border: 3px solid white;
 }
+
+/* ---- Start Screen ---- */
+
+main {
+    display:flex;
+    align-items: center;
+}
+
+main button {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+main h1 {
+    color: white;
+}
+

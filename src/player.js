@@ -85,8 +85,10 @@ Player.prototype.removeLife = function () {
 };
 
 Player.prototype.draw = function () {
-    this.ctx.fillStyle = "lightblue";
+    this.img = new Image();
+    this.img.src = "./img/loader.png"
+    //this.ctx.fillStyle = "lightblue";
 
     // fillRect(x, y, width, height)
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    this.ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
 };
