@@ -194,4 +194,5 @@ Game.prototype.passGameOverCallback = function (gameOverFunc) {
 
 Game.prototype.countScore = function () {
         this.score++
+        return this.score;
 }

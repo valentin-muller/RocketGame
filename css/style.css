@@ -75,7 +75,9 @@ body {
 }
 
 .game .score {
-    flex: 1;
+    position: absolute;
+    width: 65%;
+    padding-top: 150px;
 }
 
 .game .label {
@@ -84,6 +86,9 @@ body {
 
 .game .value {
     font-style: italic;
+    color: white;
+    font-size: 50px;
+    align-items: flex-start;
 }
 
 .game .canvas-container {
@@ -94,20 +99,88 @@ body {
 
 /* ---- Splash Screen ---- */
 
-main {
+.splash {
     display:flex;
     align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
     background-image: url(../img/startcreen.png);
+    height: 100vh;
+    font-family: 'Rajdhani',sans-serif;
 }
 
-main button {
-    padding: 10px 20px;
-    display: flex;
+.splash button {
+   border: none;
+   background: #404040;
+   color: #ffffff !important;
+   font-weight: 100;
+   padding: 20px;
+   text-transform: uppercase;
+   border-radius: 6px;
+   display: inline-block;
+   transition: all 0.3s ease 0s;
+}
+
+.splash button:hover {
+    color: #404040 !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.3s ease 0s;
+}
+
+
+.splash h1 {
+    color: white;
     justify-content: center;
     align-content: center;
 }
 
-main h1 {
+.splash p {
     color: white;
 }
 
+
+/* ---- Gameover Screen ---- */
+
+.gameover {
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-image: url(../img/startcreen.png);
+    height: 100vh;
+    font-family: 'Rajdhani',sans-serif;
+}
+
+.gameover h1 {
+
+}
+
+.gameover p {
+
+}
+
+.gameover button {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.gameover button:hover {
+ color: #404040 !important;
+ font-weight: 700 !important;
+ letter-spacing: 3px;
+ background: none;
+ -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+ -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+ transition: all 0.3s ease 0s;
+}

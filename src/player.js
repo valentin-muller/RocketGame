@@ -28,13 +28,8 @@ function Player(canvas, lives, size) {
 
     this.frame = 0;
 
-    this.animation = [
-        {sprite1},
-        {sprite2},
-        {sprite3},
-        {sprite4},
-    ];
-    */
+    this.animation = [sprite1, sprite2, sprite3, sprite4];
+*/
 };
 Player.prototype.setDirection = function (direction) {
     // +1 down  -1 up
@@ -110,6 +105,7 @@ Player.prototype.removeLife = function () {
 Player.prototype.updateFrame = function() {
 
     this.frame += this.counter % 5 === 0 ? 1 : 0;
+
     this.frame = this.frame % this.animation.length;
 }
 */
@@ -119,6 +115,8 @@ Player.prototype.updateFrame = function() {
 
 Player.prototype.draw = function () {
     
+
+
     /*
     this.rocket = this.animation[this.frame];
     this.ctx.drawImage(this.sprite1, this.x, this.y, this.size, this.size);

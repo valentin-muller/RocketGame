@@ -16,13 +16,14 @@ function main() {
     var game;
     var splashScreen;
     var gameOverScreen;
-
+    var finalScore;
     // SPLASH SCREEN
     function createSplashScreen() {
         splashScreen = buildDom(`
-    <main class="spash">
-      <h1>Rocket Game</h1>
-      <button>Go!</button>
+    <main class="splash">
+      <h1>Invasion</h1>
+      <p>It's 2029. </p>
+      <button>Let's Go!</button>
     </main>`);
 
         document.body.appendChild(splashScreen);
@@ -49,12 +50,11 @@ function main() {
         <span class="label">Lives:</span>
         <span class="value"></span>
       </div>
-      <div class="score">
-        <span class="label">Score:</span>
+    </header>
+      <div class="canvas-container">
+        <div class="score">
         <span class="value"></span>
       </div>
-    </header>
-    <div class="canvas-container">
       <canvas></canvas>
     </div>
   </main>
@@ -66,16 +66,18 @@ function main() {
     }
 
     function removeGameScreen() {
+        finalScore = game.countScore();
         game.gameScreen.remove(); // We will implement it in the game object
+
     }
 
     //
     // GAME OVER SCREEN
     function createGameOverScreen(score) {
         gameOverScreen = buildDom(`
-    <main>
+    <main class="gameover">
       <h1>Game over</h1>
-      <p>Your score: <span>${score}</span></p>
+      <p>Your score: <span>${finalScore-1}</span></p>
       <button>Restart</button>
     </main>
     `);
