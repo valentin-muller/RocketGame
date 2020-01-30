@@ -17,8 +17,8 @@ function Game() {
     this.score = 0;
 
     //this.buttonClick = new Audio("../waw/button-click.wav");
-    this.collision = new Audio("../waw/collision.wav");
-    this.launch = new Audio("../waw/launch.wav"); //currentTime set to 0;
+    this.collision = new Audio("./waw/collision.wav");
+    this.launch = new Audio("./waw/launch.wav"); //currentTime set to 0;
 
 }
 
