@@ -89,13 +89,15 @@ body {
 .game .canvas-container {
     flex: 1;
     border: 3px solid white;
+    width: 100%;
 }
 
-/* ---- Start Screen ---- */
+/* ---- Splash Screen ---- */
 
 main {
     display:flex;
     align-items: center;
+    background-image: url(../img/startcreen.png);
 }
 
 main button {

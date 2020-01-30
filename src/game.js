@@ -14,6 +14,11 @@ function Game() {
     this.gap = 250;
 
     this.counter = 0;
+    this.score = 0;
+
+    //this.buttonClick = new Audio("../waw/button-click.wav");
+    this.collision = new Audio("../waw/collision.wav");
+    this.launch = new Audio("../waw/launch.wav"); //currentTime set to 0;
 
 }
 
@@ -22,18 +27,18 @@ Game.prototype.start = function () {
     this.canvasContainer = document.querySelector(".canvas-container");
     this.canvas = this.canvasContainer.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
-
+    
     this.livesElement = this.gameScreen.querySelector(".lives .value");
     this.scoreElement = this.gameScreen.querySelector(".score .value");
-
+    
     var containerWidth = this.canvasContainer.offsetWidth;
     var containerHeight = this.canvasContainer.offsetHeight;
-
+    
     this.canvas.setAttribute("width", containerWidth);
     this.canvas.setAttribute("height", containerHeight);
-
+    
     this.previousGapMiddle = this.canvas.height / 2;
-
+    
 
     // Create the player
     this.player = new Player(this.canvas, 1, 100);
@@ -42,6 +47,9 @@ Game.prototype.start = function () {
     this.handleKeyDown = function (event) {
         if (event.key === "ArrowUp") {
             this.player.setDirection("up");
+            // AUDIO EXAMPLE HERE
+            this.launch.play();
+            this.launch.currentTime = 0;
         } else if (event.key === "ArrowDown") {
             this.player.setDirection("down");
         }
@@ -62,16 +70,15 @@ Game.prototype.startLoop = function () {
 
         // 1. Create enemies randomly
 
-        this.score++;
+        //this.score++;
         this.scoreElement.innerHTML = this.score;
         this.counter++;
-        
 
         if (this.counter % 160 === 0) {
             this.counter = 0;
             //var randomY = this.canvas.height * Math.random();
             var getRandomHeight = function() {
-                console.log('this', this);
+
                 var bottomHeightSize = 100;
                 var minTopHeightSize = 100;
                 var maxTopHeightSize = this.canvas.height - bottomHeightSize - this.gap;
@@ -145,6 +152,7 @@ Game.prototype.updateGameStats = function () {};
 
 Game.prototype.gameOver = function () {
     this.gameIsOver = true;
+    this.collision.play();
 
     this.startOver(); // the callback function ( gameOver ) passed from main()
 };
@@ -162,7 +170,9 @@ Game.prototype.checkCollisions = function () {
             if (this.player.lives === 0) {
                 this.gameOver();
             }
-        }
+        } if (enemy.x === 191) {
+            this.countScore();
+               }
     }, this);
 
     this.bottomEnemies.forEach(function (enemy) {
@@ -181,3 +191,7 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.passGameOverCallback = function (gameOverFunc) {
     this.startOver = gameOverFunc;
 };
+
+Game.prototype.countScore = function () {
+        this.score++
+}

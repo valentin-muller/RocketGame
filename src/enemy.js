@@ -23,10 +23,12 @@ function Enemy(canvas, speed, y, height, color) { // y - top edge    //  height 
 };
 
 Enemy.prototype.draw = function () {
-    this.ctx.fillStyle = this.color;
+    this.img = new Image ();
+    this.img.src = "../img/laser.png"
+    //this.ctx.fillStyle = this.color;
 
     // fillRect(x, y, width, height)
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     //this.ctx.fillRect(this.x, this.bottomY, this.width, this.height);
 };
 

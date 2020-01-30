@@ -1,4 +1,6 @@
 "use strict";
+var buttonClick = new Audio("../waw/button-click.wav");
+
 
 // Creates a HTML elements out of the string that looks like html
 function buildDom(htmlString) {
@@ -18,7 +20,7 @@ function main() {
     // SPLASH SCREEN
     function createSplashScreen() {
         splashScreen = buildDom(`
-    <main>
+    <main class="spash">
       <h1>Rocket Game</h1>
       <button>Go!</button>
     </main>`);
@@ -28,6 +30,7 @@ function main() {
         var startButton = splashScreen.querySelector("button");
 
         startButton.addEventListener("click", function () {
+            buttonClick.play();
             startGame();
         });
     }
@@ -36,7 +39,7 @@ function main() {
         splashScreen.remove(); // remove() is an HTML method that removes the element entirely
     }
 
-    //
+
     // GAME SCREEN
     function createGameScreen() {
         var gameScreen = buildDom(`
