@@ -24,7 +24,7 @@ function Enemy(canvas, speed, y, height, color) { // y - top edge    //  height 
 
 Enemy.prototype.draw = function () {
     this.img = new Image ();
-    this.img.src = "../img/laser.png"
+    this.img.src = "./img/laser.png"
     //this.ctx.fillStyle = this.color;
 
     // fillRect(x, y, width, height)

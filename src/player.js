@@ -18,13 +18,13 @@ function Player(canvas, lives, size) {
 
 
     this.sprite1 = new Image();
-    this.sprite1.src = "/../img/sprite1.png";
+    this.sprite1.src = "./img/sprite1.png";
     this.sprite2 = new Image();
-    this.sprite2.src = "/../img/sprite2.png";
+    this.sprite2.src = "./img/sprite2.png";
     this.sprite3 = new Image();
-    this.sprite3.src = "/../img/sprite3.png";
+    this.sprite3.src = "./img/sprite3.png";
     this.sprite4 = new Image();
-    this.sprite4.src = "/../img/sprite4.png";
+    this.sprite4.src = "./img/sprite4.png";
 
     this.frame = 0;
     this.counter = 0;
