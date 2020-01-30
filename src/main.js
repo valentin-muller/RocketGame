@@ -22,7 +22,7 @@ function main() {
         splashScreen = buildDom(`
     <main class="splash">
       <h1>Invasion</h1>
-      <p>It's 2029. </p>
+      <p>It's 2029... </p>
       <button>Let's Go!</button>
     </main>`);
 
