@@ -16,7 +16,7 @@ function Player(canvas, lives, size) {
     this.jump = 4.6;
 
 
-/*
+
     this.sprite1 = new Image();
     this.sprite1.src = "../img/sprite1.png";
     this.sprite2 = new Image();
@@ -27,9 +27,10 @@ function Player(canvas, lives, size) {
     this.sprite4.src = "../img/sprite4.png";
 
     this.frame = 0;
+    this.counter = 0;
 
-    this.animation = [sprite1, sprite2, sprite3, sprite4];
-*/
+    this.animation = [this.sprite1, this.sprite2, this.sprite3, this.sprite4];
+
 };
 Player.prototype.setDirection = function (direction) {
     // +1 down  -1 up
@@ -45,7 +46,7 @@ Player.prototype.didCollide = function (enemy, position) {
     if(position === "top") {
         var enemyLeft = enemy.x;
         var enemyRight = enemy.x + enemy.width;
-        var enemyTop = enemy.topY
+        var enemyTop = enemy.y
         var enemyBottom = enemy.y + enemy.height;
 
         var crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
@@ -63,7 +64,7 @@ Player.prototype.didCollide = function (enemy, position) {
     } else if(position === "bottom") {
         var enemyLeft = enemy.x;
         var enemyRight = enemy.x + enemy.width;
-        var enemyTop = enemy.bottomY;
+        var enemyTop = enemy.y;
         var enemyBottom = enemy.y + enemy.height;
 
         var crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
@@ -101,20 +102,25 @@ Player.prototype.removeLife = function () {
 };
 
 
-/*
+
 Player.prototype.updateFrame = function() {
 
     this.frame += this.counter % 5 === 0 ? 1 : 0;
 
     this.frame = this.frame % this.animation.length;
 }
-*/
+
 
 
 
 
 Player.prototype.draw = function () {
     
+this.counter++
+this.updateFrame();
+
+var currentAnimation = this.animation[this.frame];
+
 
 
     /*
@@ -126,8 +132,8 @@ Player.prototype.draw = function () {
     */
     
     
-    this.img = new Image();
-    this.img.src = "./img/sprite.png";
+    this.img = currentAnimation;
+
 
     //this.ctx.fillStyle = "lightblue";
     // fillRect(x, y, width, height)
