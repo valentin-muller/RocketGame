@@ -163,7 +163,8 @@ body {
 }
 
 .gameover p {
-
+padding-bottom: 200px;
+font-size: 50px;
 }
 
 .gameover button {
