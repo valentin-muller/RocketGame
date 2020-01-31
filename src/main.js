@@ -22,7 +22,11 @@ function main() {
         splashScreen = buildDom(`
     <main class="splash">
       <h1>Invasion</h1>
-      <p>It's 2029... </p>
+      <p>It’s 2029. <br>
+       For the first time, humans are going to Mars. It turns out alien life exists on Mars and they do not welcome humans visitors. <br>
+
+Help the spacecraft avoid the laser-shots by navigating in between them. <br> 
+Use the “Arrow Up” key to fly the spacecraft. </p>
       <button>Let's Go!</button>
     </main>`);
 
