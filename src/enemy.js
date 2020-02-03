@@ -1,7 +1,8 @@
 "use strict";
 
-function Enemy(canvas, speed, y, height, color) { // y - top edge    //  height is the bottom edge
-    //this.position = [];
+class Enemy { 
+    constructor(canvas, speed, y, height, color) {
+   
     
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
@@ -22,7 +23,7 @@ function Enemy(canvas, speed, y, height, color) { // y - top edge    //  height 
     this.speed = speed;
 };
 
-Enemy.prototype.draw = function () {
+draw() {
     this.img = new Image ();
     this.img.src = "../img/laser.png"
     //this.ctx.fillStyle = this.color;
@@ -32,11 +33,13 @@ Enemy.prototype.draw = function () {
     //this.ctx.fillRect(this.x, this.bottomY, this.width, this.height);
 };
 
-Enemy.prototype.updatePosition = function () {
+updatePosition() {
     this.x = this.x - this.speed;
 };
 
-Enemy.prototype.isInsideScreen = function () {
+isInsideScreen() {
     return (this.x + this.width * this.height > 0)
+
+};
 
 };

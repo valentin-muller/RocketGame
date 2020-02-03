@@ -1,10 +1,10 @@
 "use strict";
-var buttonClick = new Audio("../waw/button-click.wav");
+const buttonClick = new Audio("../waw/button-click.wav");
 
 
 // Creates a HTML elements out of the string that looks like html
-function buildDom(htmlString) {
-    var div = document.createElement("div");
+const buildDom = (htmlString) => {
+    const div = document.createElement("div");
 
     div.innerHTML = htmlString;
 
@@ -12,11 +12,11 @@ function buildDom(htmlString) {
 }
 
 // Run on initial start and call other functions that manage the game
-function main() {
-    var game;
-    var splashScreen;
-    var gameOverScreen;
-    var finalScore;
+const main = () => {
+    let game;
+    let splashScreen;
+    let gameOverScreen;
+    let finalScore;
     // SPLASH SCREEN
     function createSplashScreen() {
         splashScreen = buildDom(`
@@ -36,14 +36,14 @@ function main() {
         });
     }
 
-    function removeSplashScreen() {
+    const removeSplashScreen = () => {
         splashScreen.remove(); // remove() is an HTML method that removes the element entirely
     }
 
 
     // GAME SCREEN
-    function createGameScreen() {
-        var gameScreen = buildDom(`
+    const createGameScreen = () => {
+        const gameScreen = buildDom(`
     <main class="game container">
     <header>
       <div class="lives">
@@ -65,7 +65,7 @@ function main() {
         return gameScreen;
     }
 
-    function removeGameScreen() {
+    const removeGameScreen = () => {
         finalScore = game.countScore();
         game.gameScreen.remove(); // We will implement it in the game object
 
@@ -73,7 +73,7 @@ function main() {
 
     //
     // GAME OVER SCREEN
-    function createGameOverScreen(score) {
+    const createGameOverScreen = (score) => {
         gameOverScreen = buildDom(`
     <main class="gameover">
       <h1>Game over</h1>
@@ -84,12 +84,12 @@ function main() {
 
         document.body.appendChild(gameOverScreen);
 
-        var button = gameOverScreen.querySelector("button");
+        let button = gameOverScreen.querySelector("button");
 
         button.addEventListener("click", startGame);
     }
 
-    function removeGameOverScreen() {
+    const removeGameOverScreen = () => {
         if (gameOverScreen !== undefined) {
             // if it exists saved in a variable
             gameOverScreen.remove();
@@ -98,7 +98,7 @@ function main() {
 
     //
     // SETTING GAME STATE
-    function startGame() {
+    const startGame = () => {
         removeSplashScreen();
         removeGameOverScreen();
 
@@ -112,7 +112,7 @@ function main() {
         // End the game
     }
 
-    function gameOver() {
+    const gameOver = () => {
         removeGameScreen();
         createGameOverScreen(); // <--
 

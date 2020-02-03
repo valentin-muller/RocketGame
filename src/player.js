@@ -1,6 +1,7 @@
 "use strict";
 
-function Player(canvas, lives, size) {
+class Player {
+    constructor(canvas, lives, size) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
 
@@ -14,65 +15,53 @@ function Player(canvas, lives, size) {
     this.speed = 0;
     this.gravity = 0.25;
     this.jump = 4.6;
+    };
 
 
-/*
-    this.sprite1 = new Image();
-    this.sprite1.src = "../img/sprite1.png";
-    this.sprite2 = new Image();
-    this.sprite2.src = "../img/sprite2.png";
-    this.sprite3 = new Image();
-    this.sprite3.src = "../img/sprite3.png";
-    this.sprite4 = new Image();
-    this.sprite4.src = "../img/sprite4.png";
 
-    this.frame = 0;
 
-    this.animation = [sprite1, sprite2, sprite3, sprite4];
-*/
-};
-Player.prototype.setDirection = function (direction) {
-    // +1 down  -1 up
-    if (direction === "up") this.speed = - this.jump;
-
+setDirection() {
+    if (direction === "up") this.speed = - this.jump; 
 };
 
-Player.prototype.didCollide = function (enemy, position) {
-    var playerLeft = this.x;
-    var playerRight = this.x + this.size;
-    var playerTop = this.y;
-    var playerBottom = this.y + this.size;
+
+
+didCollide(enemy, position) {
+    let playerLeft = this.x;
+    let playerRight = this.x + this.size;
+    let playerTop = this.y;
+    let playerBottom = this.y + this.size;
     if(position === "top") {
-        var enemyLeft = enemy.x;
-        var enemyRight = enemy.x + enemy.width;
-        var enemyTop = enemy.topY
-        var enemyBottom = enemy.y + enemy.height;
+        let enemyLeft = enemy.x;
+        let enemyRight = enemy.x + enemy.width;
+        let enemyTop = enemy.topY
+        let enemyBottom = enemy.y + enemy.height;
 
-        var crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
+        let crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
 
-        var crossLeft = enemyRight >= playerLeft && enemyLeft <= playerRight;
+        let crossLeft = enemyRight >= playerLeft && enemyLeft <= playerRight;
 
-        var crossTop = enemyBottom >= playerTop && enemyTop <= playerBottom;
+        let crossTop = enemyBottom >= playerTop && enemyTop <= playerBottom;
 
-        var crossBottom = enemyBottom <= playerBottom && enemyBottom >= playerTop;
+        let crossBottom = enemyBottom <= playerBottom && enemyBottom >= playerTop;
 
         if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
             console.log("hit");
             return true;
         }
     } else if(position === "bottom") {
-        var enemyLeft = enemy.x;
-        var enemyRight = enemy.x + enemy.width;
-        var enemyTop = enemy.bottomY;
-        var enemyBottom = enemy.y + enemy.height;
+        let enemyLeft = enemy.x;
+        let enemyRight = enemy.x + enemy.width;
+        let enemyTop = enemy.bottomY;
+        let enemyBottom = enemy.y + enemy.height;
 
-        var crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
+        let crossRight = enemyLeft <= playerRight && enemyRight >= playerLeft;
 
-        var crossLeft = enemyRight >= playerLeft && enemyLeft <= playerRight;
+        let crossLeft = enemyRight >= playerLeft && enemyLeft <= playerRight;
 
-        var crossTop = enemyBottom >= playerTop && enemyTop <= playerBottom;
+        let crossTop = enemyBottom >= playerTop && enemyTop <= playerBottom;
 
-        var crossBottom = enemyBottom <= playerBottom && enemyBottom >= playerTop;
+        let crossBottom = enemyBottom <= playerBottom && enemyBottom >= playerTop;
           if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
             console.log("bottom hit")
           return true;
@@ -81,39 +70,35 @@ Player.prototype.didCollide = function (enemy, position) {
         
 };
 } 
-Player.prototype.updatePosition = function () {
+
+
+
+updatePosition() {
     this.speed += this.gravity;
     this.y = this.y += this.speed;
 };
 
-Player.prototype.handleScreenCollision = function () {
+handleScreenCollision() {
     this.updatePosition();
 
-    var screenTop = 0;
-    var screenBottom = this.canvas.height;
+    let screenTop = 0;
+    let screenBottom = this.canvas.height;
 
     if (this.y + this.size > screenBottom) this.direction = -1;
     else if (this.y < screenTop) this.direction = 1;
 };
 
-Player.prototype.removeLife = function () {
+removeLife() {
     this.lives -= 1;
 };
 
 
-/*
-Player.prototype.updateFrame = function() {
-
-    this.frame += this.counter % 5 === 0 ? 1 : 0;
-
-    this.frame = this.frame % this.animation.length;
-}
-*/
 
 
 
 
-Player.prototype.draw = function () {
+
+draw() {
     
 
 
@@ -134,4 +119,6 @@ Player.prototype.draw = function () {
     
     this.ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
     
+};
+
 };
